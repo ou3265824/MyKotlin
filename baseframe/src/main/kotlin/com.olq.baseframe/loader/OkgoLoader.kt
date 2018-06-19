@@ -1,7 +1,6 @@
 package com.olq.baseframe.loader
 
 import android.app.Application
-import android.util.Log
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheEntity
 import com.lzy.okgo.cache.CacheMode
@@ -95,9 +94,8 @@ object OkgoLoader {
     }
 
 
-    fun sendByGet(clazz: Class<*>, url: String, headers: HttpHeaders?, params: HttpParams?, callBack: GsonCallBack<*>) {
+    fun sendByGet( url: String, headers: HttpHeaders?, params: HttpParams?,clazz: Class<*>, callBack: GsonCallBack<*>) {
         val h= HttpHeaders()
-//        <String,String>(APPID_KEY to APPID_VALUE, API_KEY to API_VALUE, TYPE_KEY to TYPE_VALUE);
         h.put(APPID_KEY , APPID_VALUE)
         h.put( API_KEY , API_VALUE)
         h.put(TYPE_KEY , TYPE_VALUE)
@@ -108,10 +106,7 @@ object OkgoLoader {
                 .execute(object : StringCallback() {
                     override fun onSuccess(response: Response<String>?) {
                         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                        if (response != null) {
-                            Log.e("test",response.body().toString())
                             disposeCallBack.onSucceed(clazz,callBack,response)
-                        }
                     }
 
                     override fun onError(response: Response<String>?) {
@@ -122,13 +117,13 @@ object OkgoLoader {
                  })
     }
 
-    fun sendByPost(clazz: Class<*>,url: String,headers: HttpHeaders, params: HttpParams,callBack: GsonCallBack<*>){
+    fun sendByPost(url: String,headers: HttpHeaders, params: HttpParams,clazz: Class<*>,callBack: GsonCallBack<*>){
         OkGo.post<String>(url).tag(url)
                 .headers(headers)
                 .params(params)
                 .execute(object : StringCallback(){
                     override fun onSuccess(response: Response<String>?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                         disposeCallBack.onSucceed(clazz,callBack,response)
                     }
 

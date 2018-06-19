@@ -6,7 +6,7 @@ object GsonUtils {
 
     private val gson = Gson()
 
-    fun <T> getBeanFromJson(s: String, t: Class<T>): T {
+    fun <T> getBeanFromJson(s: String, t: Class<T>?): T {
         return gson.fromJson(s, t)
     }
 
