@@ -9,6 +9,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.lzy.okgo.callback.StringCallback
+import com.lzy.okgo.model.HttpParams
+import com.lzy.okgo.model.Response
+import com.olq.baseframe.loader.OkgoLoader
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -23,6 +27,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(Intent(application,LoginActivity::class.java))
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+            val params=HttpParams()
+            params.put("username","a4")
+            params.put("password",123456)
+            OkgoLoader.sendByPost("http://192.168.3.207:8080/ssm/user/login",params,object :StringCallback(){
+                override fun onSuccess(response: Response<String>?) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    val s= response!!.body()
+                    print(s)
+                }
+
+            })
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -31,6 +46,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onBackPressed() {

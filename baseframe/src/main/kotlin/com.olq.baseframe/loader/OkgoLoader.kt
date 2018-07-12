@@ -129,6 +129,12 @@ object OkgoLoader {
 
                 })
     }
+    fun sendByPost(url: String, params: HttpParams,callBack: StringCallback){
+        OkGo.post<String>(url).tag(url)
+//                .headers(headers)
+                .params(params)
+                .execute(callBack)
+    }
 
 
 

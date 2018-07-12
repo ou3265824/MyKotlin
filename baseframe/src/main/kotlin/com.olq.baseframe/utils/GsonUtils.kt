@@ -1,18 +1,23 @@
 package com.olq.baseframe.utils
 
 import com.google.gson.Gson
+import java.lang.reflect.Type
 
 object GsonUtils {
 
     private val gson = Gson()
 
-    fun <T> getBeanFromJson(s: String, t: Class<T>?): T {
+    fun <T> fromJson(s: String?, t: Class<T>?): T {
         return gson.fromJson(s, t)
     }
+    fun <T> fromJson(s: String?, type:Type?): T {
+        return gson.fromJson(s, type)
+    }
 
-    fun getStringFromJson(obj: Object):String{
+    fun toJson(obj: Object):String{
        return gson.toJson(obj)
     }
+
 
     fun getlistToString(list: List<String>?): String? {
         if (list == null) {
