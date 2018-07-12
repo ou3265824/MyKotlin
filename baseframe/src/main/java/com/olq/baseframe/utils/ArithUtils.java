@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.widget.TextView;
 
-import com.shanghaizhida.octopusbase.R;
-
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -114,32 +112,6 @@ public class ArithUtils {
     }
 
 
-    public static void countEarnings(Context context, TextView textView , double d1) {
-        countEarnings(context,textView,d1,"%");
-    }
-    public static void countEarnings(Context context, TextView textView , double d1, String end) {
-        String s=retainTwo(d1);
-        if (d1>0){
-            textView.setTextColor(context.getResources().getColor(R.color.strategy_number));
-            textView.setText("+"+s+end);
-        }else if (d1==0){
-            textView.setTextColor(context.getResources().getColor(R.color.strategy_intro));
-            textView.setText(s+end);
-        }else{
-            textView.setTextColor(context.getResources().getColor(R.color.minus));
-            textView.setText(s+end);
-        }
-    }
-    public static void countEarningsColor(Context context, TextView textView , double d1) {
-        String s=retainTwo(d1);
-        if (d1>0){
-            textView.setTextColor(context.getResources().getColor(R.color.strategy_number));
-        }else if (d1==0){
-            textView.setTextColor(context.getResources().getColor(R.color.strategy_intro));
-        }else{
-            textView.setTextColor(context.getResources().getColor(R.color.minus));
-        }
-    }
 
     /**
      * 修改字体
@@ -169,27 +141,6 @@ public class ArithUtils {
         return s;
     }
 
-    public static void countEarningsUnit(Context context, TextView textView , double d1, String end) {
-        if (d1>0){
-            textView.setTextColor(context.getResources().getColor(R.color.strategy_number));
-            textView.setText("+"+unitTenNumber(d1)+end);
-        }else if (d1==0){
-            textView.setTextColor(context.getResources().getColor(R.color.strategy_intro));
-            textView.setText(unitTenNumber(d1)+end);
-        }else{
-            textView.setTextColor(context.getResources().getColor(R.color.minus));
-            textView.setText(unitTenNumber(d1)+end);
-        }
-    }
 
-    public static void getType(Context context, TextView textView, String type){
-        if (type.equals("1")){
-            textView.setText("买");
-            textView.setTextColor(context.getResources().getColor(R.color.bg_bug));
-        }else{
-            textView.setTextColor(context.getResources().getColor(R.color.bg_sell));
-            textView.setText("卖");
-        }
-    }
 
 }

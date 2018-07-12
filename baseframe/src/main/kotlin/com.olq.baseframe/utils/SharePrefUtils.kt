@@ -22,21 +22,13 @@ object SharePrefUtils {
        this.context=base
     }
 
-
-    fun  getSharedPreferences(name: String):SharedPreferences{
-        return  context.getSharedPreferences(name,
-                Context.MODE_PRIVATE)
-    }
-
-    fun  getEdit(name: String):SharedPreferences.Editor{
-        return  getSharedPreferences(name).edit()
-    }
-    fun  getEdit( ):SharedPreferences.Editor{
+    fun  getEdit():SharedPreferences.Editor{
         return  getSharedPreferences().edit()
     }
 
     fun  getSharedPreferences():SharedPreferences{
-       return getSharedPreferences(FILE_NAME)
+        return  context.getSharedPreferences(FILE_NAME,
+                Context.MODE_PRIVATE)
     }
 
 
@@ -47,14 +39,11 @@ object SharePrefUtils {
      * @param key
      * @param object
      */
-    fun put( name: String, key: String?, obj: Any?) {
+    fun put( key: String?, obj: Any?) {
         if ( key == null || obj == null) {
             return
         }
-
         val edit= getEdit()
-
-
         if (obj is String) {
             edit.putString(key, obj as String?)
         } else if (obj is Int) {
@@ -72,9 +61,6 @@ object SharePrefUtils {
         SharedPreferencesCompat.apply(edit)
     }
 
-    fun put( key: String, obj: Any) {
-        put( FILE_NAME, key, obj)
-    }
 
     /**
      * 得到保存数据的方法，我们根据默认值得到保存的数据的具体类型，然后调用相对于的方法获取值
@@ -115,10 +101,7 @@ object SharePrefUtils {
      * @param key
      */
     fun remove( key: String) {
-
-        val sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE)
-        val editor = sp.edit()
+        val editor = getEdit()
         editor.remove(key)
         SharedPreferencesCompat.apply(editor)
     }
@@ -129,10 +112,7 @@ object SharePrefUtils {
      * @param context
      */
     fun clear() {
-
-        val sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE)
-        val editor = sp.edit()
+        val editor = getEdit()
         editor.clear()
         SharedPreferencesCompat.apply(editor)
     }
@@ -146,8 +126,7 @@ object SharePrefUtils {
      */
     fun contains(key: String): Boolean {
 
-        val sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE)
+        val sp = getSharedPreferences()
         return sp.contains(key)
     }
 
@@ -159,8 +138,7 @@ object SharePrefUtils {
      */
     fun getAll(): Map<String, *> {
 
-        val sp = context.getSharedPreferences(FILE_NAME,
-                Context.MODE_PRIVATE)
+        val sp = getSharedPreferences()
         return sp.all
     }
 
@@ -216,8 +194,7 @@ object SharePrefUtils {
             return null
         }
         try {
-            val gson = Gson()
-            return gson.fromJson(json, clazz)
+            return GsonUtils.fromJson(json, clazz)
         } catch (e: Exception) {
             return null
         }

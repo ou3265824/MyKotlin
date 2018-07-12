@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.shanghaizhida.octopusbase.utils.DensityUtils;
+import com.olq.baseframe.utils.DensityUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
