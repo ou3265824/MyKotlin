@@ -46,6 +46,7 @@ dependencies {
     implementation rootProject.ext.dependencies.gson
     implementation rootProject.ext.dependencies.glide
     api rootProject.ext.dependencies.okgo
+    api rootProject.ext.dependencies.eventbus
 
     api 'com.tencent.bugly:crashreport_upgrade:latest.release'
 //其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.2.0
