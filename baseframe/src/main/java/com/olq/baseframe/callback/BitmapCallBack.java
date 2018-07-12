@@ -1,10 +1,10 @@
-package com.olq.baseframe.callback;
-
-import android.graphics.Bitmap;
-
-/**
- * Created by Administrator on 2017/1/23.
- */
-
-public abstract class BitmapCallBack extends HttpCallBack<Bitmap>{
-}
+//package com.olq.baseframe.callback;
+//
+//import android.graphics.Bitmap;
+//
+///**
+// * Created by Administrator on 2017/1/23.
+// */
+//
+//public abstract class BitmapCallBack extends HttpCallBack<Bitmap>{
+//}
