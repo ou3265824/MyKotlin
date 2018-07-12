@@ -1,16 +1,21 @@
 package com.olq.baseframe.base
 
 import android.app.Application
+import android.content.Context
 import com.olq.baseframe.CrashHandler
 import com.olq.baseframe.loader.OkgoLoader
+import com.olq.baseframe.utils.SharePrefUtils
 import com.tencent.bugly.Bugly
 
 class BaseApplication : Application() {
 
+    lateinit var mApplicationContext:Context
 
     override fun onCreate() {
         super.onCreate()
+        mApplicationContext=this
         OkgoLoader.init(this)
+        SharePrefUtils.init(this)
         CrashHandler();
         Bugly.init(getApplicationContext(), "e423995e12", false);
     }
