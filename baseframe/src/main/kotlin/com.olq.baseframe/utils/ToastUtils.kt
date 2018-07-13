@@ -8,6 +8,11 @@ object ToastUtils{
 
     var mToast: Toast? = null
     val TIME = 10000// 显示时间
+    lateinit var mContext:Context
+
+    fun init(context: Context) {
+        mContext=context
+    }
 
     /**
      * 显示信息
@@ -42,11 +47,11 @@ object ToastUtils{
      * @param message  (显示内容)
      * @param duration (显示时间)
      */
-    fun show(context: Context, message: String, duration: Int,gravity: Int?) {
-        show(context,null,message,duration,gravity,0,0)
+    fun show( message: String, duration: Int,gravity: Int?) {
+        show(mContext,null,message,duration,gravity,0,0)
     }
-    fun show(context: Context, view: View?, duration: Int,gravity: Int?) {
-        show(context,view,null,duration,gravity,0,0)
+    fun show( view: View?, duration: Int,gravity: Int?) {
+        show(mContext,view,null,duration,gravity,0,0)
     }
 
     /**
@@ -55,11 +60,11 @@ object ToastUtils{
      * @param context (上下文)
      * @param message (显示内容)
      */
-    fun show(context: Context, message: String,gravity: Int?) {
-        show(context, message, Toast.LENGTH_SHORT,gravity)
+    fun show( message: String,gravity: Int?) {
+        show(message, Toast.LENGTH_SHORT,gravity)
     }
-    fun show(context: Context,  view: View?,gravity: Int?) {
-        show(context, view, Toast.LENGTH_SHORT,gravity)
+    fun show(  view: View?,gravity: Int?) {
+        show( view, Toast.LENGTH_SHORT,gravity)
     }
     /**
      * 显示长的
@@ -67,11 +72,11 @@ object ToastUtils{
      * @param context (上下文)
      * @param message (显示内容)
      */
-    fun showLong(context: Context, message: String,gravity: Int) {
-        show(context, message, Toast.LENGTH_LONG,gravity)
+    fun showLong( message: String,gravity: Int) {
+        show( message,Toast.LENGTH_LONG,gravity)
     }
-    fun showLong(context: Context,  view: View?,gravity: Int) {
-        show(context, view, Toast.LENGTH_LONG,gravity)
+    fun showLong(  view: View?,gravity: Int) {
+        show( view, Toast.LENGTH_LONG,gravity)
     }
 
 
@@ -81,18 +86,18 @@ object ToastUtils{
      * @param context (上下文)
      * @param message (显示内容)
      */
-    fun show(context: Context, message: String) {
-        show(context, message, null)
+    fun show( message: String) {
+        show( message, null)
     }
-    fun show(context: Context, view: View?) {
-        show(context, view, null)
+    fun show( view: View?) {
+        show( view, null)
     }
 
-    fun showLong(context: Context, message: String) {
-        show(context, message, null)
+    fun showLong( message: String) {
+        show( message, null)
     }
-    fun showLong(context: Context,  view: View?) {
-        show(context, view,null)
+    fun showLong(  view: View?) {
+        show( view,null)
     }
 
 }

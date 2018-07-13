@@ -2,9 +2,9 @@ package com.olq.baseframe.base
 
 import android.app.Application
 import android.content.Context
-import com.olq.baseframe.CrashHandler
 import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.utils.SharePrefUtils
+import com.olq.baseframe.utils.ToastUtils
 import com.tencent.bugly.Bugly
 
 class BaseApplication : Application() {
@@ -16,8 +16,9 @@ class BaseApplication : Application() {
         mApplicationContext=this
         OkgoLoader.init(this)
         SharePrefUtils.init(this)
-        CrashHandler();
-        Bugly.init(getApplicationContext(), "e423995e12", false);
+        ToastUtils.init(this)
+        CrashHandler.init(this)
+        Bugly.init(this, "e423995e12", false)
     }
 
 

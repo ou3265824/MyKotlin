@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
                     //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     LogUtils.e("T",t.username+"----"+t.toString())
                     LogUtils.e(t.username+"----"+t.toString())
-                    ToastUtils.show(applicationContext, t.username)
+                    ToastUtils.show( t.username)
                 }
 
             })
