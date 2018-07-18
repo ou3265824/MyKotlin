@@ -1,9 +1,7 @@
 package com.olq.baseframe.loader.call
 
-abstract class BaseCallBack<T>{
+abstract class BaseCallBack{
 
-    abstract fun onSucceed(t:T)
 
-    abstract fun onError()
 
 }

@@ -7,14 +7,15 @@ object GsonUtils {
 
     private val gson = Gson()
 
-    fun <T> fromJson(s: String?, t: Class<T>?): T {
+    fun <T> fromJson(s: String, t: Class<T>): T {
         return gson.fromJson(s, t)
     }
-    fun <T> fromJson(s: String?, type:Type?): T {
+    fun <T> fromJson(s: String, type:Type): T {
         return gson.fromJson(s, type)
     }
 
-    fun toJson(obj: Object):String{
+
+    fun toJson(obj: Any):String{
        return gson.toJson(obj)
     }
 

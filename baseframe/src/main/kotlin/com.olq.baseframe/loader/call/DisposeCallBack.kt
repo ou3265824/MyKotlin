@@ -1,21 +1,23 @@
 package com.olq.baseframe.loader.call
 
-import com.lzy.okgo.model.Response
-import com.olq.baseframe.utils.GsonUtils
-
 class DisposeCallBack{
 
-     fun <T> onSucceed(clazz: Class<*>?, callBack: HttpCallBack<T>, response: Response<String>?){
+     fun <T> onSucceed(callBack: HttpCallBack<T>, body: String){
        if (callBack is GsonCallBack<*>){
            val gsonCallBack =callBack as GsonCallBack<T>
-           gsonCallBack.onSucceed(GsonUtils.fromJson(response?.body().toString(),clazz) as T)
+           gsonCallBack.onResponse(body)
        }else if (callBack is StringCallBack){
-           (callBack as StringCallBack).onSucceed(response?.body().toString())
+           (callBack as StringCallBack).onResponse(body)
        }
     }
 
-    fun <T> onError(callBack: HttpCallBack<T>){
-        callBack.onError()
+    fun <T> onError(callBack: HttpCallBack<T>, body: String){
+        if (callBack is GsonCallBack<*>){
+            val gsonCallBack =callBack as GsonCallBack<T>
+            gsonCallBack.onError(body)
+        }else if (callBack is StringCallBack){
+            (callBack as StringCallBack).onError(body)
+        }
     }
 
 }

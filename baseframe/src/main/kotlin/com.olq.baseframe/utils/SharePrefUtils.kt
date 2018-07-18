@@ -194,7 +194,7 @@ object SharePrefUtils {
             return null
         }
         try {
-            return GsonUtils.fromJson(json, clazz)
+            return GsonUtils.fromJson(json!!, clazz)
         } catch (e: Exception) {
             return null
         }
@@ -219,7 +219,7 @@ object SharePrefUtils {
         }
         try {
             val gson = Gson()
-            return gson.fromJson<T>(json, type)
+            return gson.fromJson(json, type)
         } catch (e: Exception) {
             return null
         }

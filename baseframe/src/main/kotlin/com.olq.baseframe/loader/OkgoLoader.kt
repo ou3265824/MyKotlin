@@ -20,14 +20,7 @@ import java.util.logging.Level
 
 object OkgoLoader {
 
-    val APPID_KEY="X-Bmob-Application-Id"
-    val APPID_VALUE="d0f1505957f1ade2ea27d30ee603d138"
 
-    val API_KEY="X-Bmob-REST-API-Key"
-    val API_VALUE="c1f62f2ea289dccb57bf36633cd6547a"
-
-    val TYPE_KEY="Content-Type"
-    val TYPE_VALUE="application/json"
 
 
     lateinit var context: Application
@@ -94,46 +87,40 @@ object OkgoLoader {
     }
 
 
-    fun sendByGet( url: String, headers: HttpHeaders?, params: HttpParams?,clazz: Class<*>, callBack: GsonCallBack<*>) {
-        val h= HttpHeaders()
-        h.put(APPID_KEY , APPID_VALUE)
-        h.put( API_KEY , API_VALUE)
-        h.put(TYPE_KEY , TYPE_VALUE)
-//        headers=h;
+    fun sendByGet( url: String, headers: HttpHeaders?, params: HttpParams?, callBack: GsonCallBack<*>) {
         OkGo.get<String>(url).tag(url)
-                .headers(h)
-//                .params(params)
+                .headers(headers)
+                .params(params)
                 .execute(object : StringCallback() {
                     override fun onSuccess(response: Response<String>?) {
                         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                            disposeCallBack.onSucceed(clazz,callBack,response)
+                            disposeCallBack.onSucceed(callBack, response!!.body())
                     }
 
                     override fun onError(response: Response<String>?) {
                         super.onError(response)
-                        disposeCallBack.onError(callBack)
+                        disposeCallBack.onError(callBack, response!!.body())
                     }
 
                  })
     }
 
-    fun sendByPost(url: String,headers: HttpHeaders, params: HttpParams,clazz: Class<*>,callBack: GsonCallBack<*>){
+    fun sendByPost(url: String,headers: HttpHeaders?, params: HttpParams,callBack: GsonCallBack<*>){
         OkGo.post<String>(url).tag(url)
                 .headers(headers)
                 .params(params)
                 .execute(object : StringCallback(){
                     override fun onSuccess(response: Response<String>?) {
                         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                        disposeCallBack.onSucceed(clazz,callBack,response)
+                        disposeCallBack.onSucceed(callBack, response!!.body())
+                    }
+
+                    override fun onError(response: Response<String>?) {
+                        super.onError(response)
+                        disposeCallBack.onError(callBack, response!!.body())
                     }
 
                 })
-    }
-    fun sendByPost(url: String, params: HttpParams,callBack: StringCallback){
-        OkGo.post<String>(url).tag(url)
-//                .headers(headers)
-                .params(params)
-                .execute(callBack)
     }
 
 

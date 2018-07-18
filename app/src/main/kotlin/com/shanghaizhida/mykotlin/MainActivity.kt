@@ -2,12 +2,16 @@ package com.shanghaizhida.mykotlin
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_login.*
+import com.lzy.okgo.model.HttpParams
+import com.olq.baseframe.loader.OkgoLoader
+import com.olq.baseframe.loader.call.GsonCallBack
+import com.olq.baseframe.utils.LogUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -21,22 +25,38 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         fab.setOnClickListener { view ->
 
-            et_phone.setText("adsf")
 
 //            startActivity(Intent(application,LoginActivity::class.java))
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
-//            val params=HttpParams()
-//            params.put("username","a4")
-//            params.put("password",123456)
-//            OkgoLoader.sendByPost("http://192.168.3.207:8080/ssm/user/login",params,object :StringCallback(){
-//                override fun onSuccess(response: Response<String>?) {
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+            val params=HttpParams()
+            params.put("username","admin")
+            params.put("password",123456)
+            OkgoLoader.sendByPost("http://192.168.3.207:8080/ssm/user/login",null,params,object : GsonCallBack<String>(){
+                override fun onSuccess(t: String) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    LogUtils.e("成功："+t.toString())
+                }
+
+
+                override fun onError(error: String) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+            })
+
+
+//            OkgoLoader.sendByGet("http://192.168.3.207:8080/ssm/user/select?username=a",null,null,object :GsonCallBack<List<UserBean>>(){
+//                override fun onError(error: String) {
 //                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//                    val s= response!!.body()
-//                    print(s)
+//                }
+//
+//                override fun onSuccess(t: List<UserBean>) {
+//                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                    LogUtils.e("成功了："+t.toString())
 //                }
 //
 //            })
+
         }
 
         val toggle = ActionBarDrawerToggle(

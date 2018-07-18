@@ -3,6 +3,9 @@
 //import android.graphics.Bitmap;
 //
 //import com.lzy.okgo.model.Response;
+//import com.olq.baseframe.loader.call.GsonCallBack;
+//import com.olq.baseframe.loader.call.HttpCallBack;
+//import com.olq.baseframe.loader.call.StringCallBack;
 //import com.olq.baseframe.utils.GsonUtils;
 //
 //import java.io.File;
