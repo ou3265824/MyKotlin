@@ -56,10 +56,11 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun lazyLoad() {
-        if (isUiVisibe && isViewCreate) {
+        if (isUiVisibe && isViewCreate&&isFirsh) {
             loadData()
             isUiVisibe = false
             isViewCreate = false
+            isFirsh=false
         }
     }
 

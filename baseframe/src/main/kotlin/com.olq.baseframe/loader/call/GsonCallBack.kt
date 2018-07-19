@@ -25,15 +25,17 @@ abstract class GsonCallBack<T>: StringCallBack(){
     override fun onResponse(json: String) {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         if (type is Class<*>) {
-            val name=(type as Class<*>).name
-            if (name==String::class.java.name||name==Objects::class.java.name){
+            val name = (type as Class<*>).name
+            if (name == String::class.java.name || name == Objects::class.java.name) {
                 onSuccess(json as T)
-            }else{
-                getJson(json)
+                return
+//            }else{
+//                getJson(json)
             }
-        }else{
-            getJson(json)
         }
+//        }else{
+            getJson(json)
+//        }
 
     }
 

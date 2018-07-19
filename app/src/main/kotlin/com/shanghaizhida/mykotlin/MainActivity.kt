@@ -32,30 +32,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val params=HttpParams()
             params.put("username","admin")
             params.put("password",123456)
-            OkgoLoader.sendByPost("http://192.168.3.207:8080/ssm/user/login",null,params,object : GsonCallBack<String>(){
-                override fun onSuccess(t: String) {
-                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    LogUtils.e("成功："+t.toString())
-                }
-
-
-                override fun onError(error: String) {
-                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-            })
-
-
-//            OkgoLoader.sendByGet("http://192.168.3.207:8080/ssm/user/select?username=a",null,null,object :GsonCallBack<List<UserBean>>(){
+//            OkgoLoader.sendByPost("http://192.168.3.207:8080/ssm/user/login",null,params,object : GsonCallBack<UserBean>(){
+//                override fun onSuccess(t: UserBean) {
+//                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                    LogUtils.e("成功："+t.toString())
+//                }
+//
+//
 //                override fun onError(error: String) {
 //                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //                }
-//
-//                override fun onSuccess(t: List<UserBean>) {
-//                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//                    LogUtils.e("成功了："+t.toString())
-//                }
-//
 //            })
+
+
+            OkgoLoader.sendByGet("http://192.168.3.207:8080/ssm/user/select?username=a",null,null,object : GsonCallBack<List<UserBean>>(){
+                override fun onError(error: String) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onSuccess(t: List<UserBean>) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    LogUtils.e("成功了："+t.toString())
+                }
+
+            })
 
         }
 
