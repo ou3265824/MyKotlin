@@ -1,6 +1,6 @@
 package com.shanghaizhida.mykotlin
 
-class UserBean(
+data class UserBean(
         val createdAt:String,
         val objectId:String,
         val sessionToken:String,
@@ -12,4 +12,6 @@ class UserBean(
     override fun toString(): String {
         return "UserBean(createdAt='$createdAt', objectId='$objectId', sessionToken='$sessionToken', updatedAt='$updatedAt', username='$username', email='$email', emailVerified=$emailVerified)"
     }
+
+
 }
