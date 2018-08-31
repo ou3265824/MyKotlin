@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.jakewharton.butterknife'
+
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
@@ -43,5 +45,8 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies.espressoCore
     implementation project(':baseframe')
 
-
+//    implementation 'com.jakewharton:butterknife:8.8.1'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
