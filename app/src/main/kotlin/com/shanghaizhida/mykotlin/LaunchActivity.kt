@@ -2,7 +2,8 @@ package com.shanghaizhida.mykotlin
 
 import android.content.Intent
 import android.os.Handler
-
+import com.chenenyu.router.Router
+import com.shanghaizhida.mykotlin.base.InitActivity
 
 
 class LaunchActivity : InitActivity() {
@@ -10,7 +11,8 @@ class LaunchActivity : InitActivity() {
     val handler= Handler()
     val runnable= Runnable {
         run {
-            Intent(MainActivity::class.java,true )
+//            Intent(MainActivity::class.java,true )
+            Router.build("main").go(this)
         }
     }
 

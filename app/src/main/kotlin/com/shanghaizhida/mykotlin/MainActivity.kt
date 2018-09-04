@@ -1,20 +1,36 @@
 package com.shanghaizhida.mykotlin
 
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewAnimationUtils
+import android.view.animation.AccelerateInterpolator
+import com.chenenyu.router.annotation.Route
 import com.lzy.okgo.model.HttpParams
 import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.loader.call.GsonCallBack
 import com.olq.baseframe.utils.LogUtils
+import com.shanghaizhida.mykotlin.bean.UserBean
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
+
+
+
+
+@Route("main")
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 
@@ -66,6 +82,71 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
+        onTab()
+    }
+
+    fun onTab(){
+        text.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                    text, "show")
+
+            ActivityCompat.startActivity(this, intent, options.toBundle())
+        }
+        rb_tab1.setOnClickListener {
+            onArim(rb_tab1)
+        }
+        rb_tab2.setOnClickListener {
+            onArim(rb_tab1)
+        }
+        rb_tab3.setOnClickListener {
+            onArim(rb_tab1)
+        }
+        rb_tab4.setOnClickListener {
+            onArim(rb_tab1)
+        }
+        iv_tab.setOnClickListener {
+            onArim(iv_tab)
+        }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    fun onArim(view:View){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //  大于等于24即为5.0及以上执行内容
+//            val animator = ViewAnimationUtils.createCircularReveal(view,
+//                    view.getWidth() / 2,
+//                    view.getHeight() / 2,
+//                    view.getWidth().toFloat(), 0f)
+//            animator.interpolator = AccelerateDecelerateInterpolator()
+//            animator.duration = 1000
+//            animator.start()
+
+
+            val animator = ViewAnimationUtils.createCircularReveal(
+                    view,
+                    0,
+                    0,
+                    0f,
+                    Math.hypot(view.getWidth().toDouble(), view.getHeight().toDouble()).toFloat())
+            animator.interpolator = AccelerateInterpolator()
+            animator.duration = 1000
+            animator.start()
+        } else {
+
+        }
+
+//        val anim=ValueAnimator()
+//        anim.setIntValues(privateColor,color)
+//        anim.setEvaluator(ArgbEvaluator())
+//        anim.addUpdateListener {
+//            val color=it.getAnimatedValue() as Int
+////            iv_tab.setColorFilter(color)
+////            rb_tab1.setBackgroundColor(R.color.colorAccent)
+//        }
+//        anim.setDuration(150)
+//        anim.start()
     }
 
     override fun onBackPressed() {

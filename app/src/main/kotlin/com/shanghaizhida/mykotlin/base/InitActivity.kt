@@ -1,4 +1,4 @@
-package com.shanghaizhida.mykotlin
+package com.shanghaizhida.mykotlin.base
 
 import com.olq.baseframe.base.BaseActivity
 import com.olq.baseframe.utils.IntentUtils

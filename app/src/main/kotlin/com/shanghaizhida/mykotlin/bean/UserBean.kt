@@ -1,4 +1,4 @@
-package com.shanghaizhida.mykotlin
+package com.shanghaizhida.mykotlin.bean
 
 data class UserBean(
         val createdAt:String,

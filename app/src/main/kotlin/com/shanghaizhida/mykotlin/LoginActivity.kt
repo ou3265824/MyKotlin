@@ -1,15 +1,19 @@
 package com.shanghaizhida.mykotlin
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.olq.baseframe.base.BaseActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
+    override fun getLayout(): Int {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.activity_login
     }
+
+    override fun onCreate() {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
 
 
