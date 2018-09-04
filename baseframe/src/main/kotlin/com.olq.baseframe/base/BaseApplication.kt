@@ -6,9 +6,11 @@ import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.utils.SharePrefUtils
 import com.olq.baseframe.utils.ToastUtils
 
-class BaseApplication : Application() {
+abstract class BaseApplication : Application() {
 
     lateinit var mApplicationContext:Context
+
+    abstract fun onInit()
 
     override fun onCreate() {
         super.onCreate()
@@ -18,6 +20,13 @@ class BaseApplication : Application() {
         ToastUtils.init(this)
         CrashHandler.init(this)
 //        Bugly.init(this, "e423995e12", false)
+
+//        if (Build.isDebug()) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
+//            ARouter.openLog()     // 打印日志
+//            ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+//        }
+//        ARouter.init(this) // 尽可能早，推荐在Application中初始化
+        onInit()
     }
 
 

@@ -11,7 +11,10 @@ import org.greenrobot.eventbus.ThreadMode
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    lateinit var mContext:Context
+    companion object {
+        lateinit var mContext:Context
+    }
+
 
     abstract fun getLayout(): Int
     abstract fun onCreate()
