@@ -16,7 +16,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.animation.AccelerateInterpolator
-import com.chenenyu.router.annotation.Route
 import com.lzy.okgo.model.HttpParams
 import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.loader.call.GsonCallBack
@@ -30,7 +29,7 @@ import kotlinx.android.synthetic.main.content_main.*
 
 
 
-@Route("main")
+//@Route("main")
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
 

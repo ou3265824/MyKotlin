@@ -5,7 +5,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'com.chenenyu.router'
+//apply plugin: 'com.chenenyu.router'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion

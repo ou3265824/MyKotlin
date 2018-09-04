@@ -5,7 +5,6 @@ import android.content.Context
 import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.utils.SharePrefUtils
 import com.olq.baseframe.utils.ToastUtils
-import com.tencent.bugly.Bugly
 
 class BaseApplication : Application() {
 
@@ -18,7 +17,7 @@ class BaseApplication : Application() {
         SharePrefUtils.init(this)
         ToastUtils.init(this)
         CrashHandler.init(this)
-        Bugly.init(this, "e423995e12", false)
+//        Bugly.init(this, "e423995e12", false)
     }
 
 
