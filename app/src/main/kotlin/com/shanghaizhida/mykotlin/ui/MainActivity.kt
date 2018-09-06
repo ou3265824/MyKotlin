@@ -34,7 +34,11 @@ import kotlinx.android.synthetic.main.content_main.*
 
 @Route(path = RouterConfig.MAIN)
 class MainActivity : InitActivity(), NavigationView.OnNavigationItemSelectedListener {
-    override fun getLayout(): Int {
+    override fun onLoadData() {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getLayoutId(): Int {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return R.layout.activity_main
     }
@@ -92,17 +96,19 @@ class MainActivity : InitActivity(), NavigationView.OnNavigationItemSelectedList
 
 
     fun onTab(){
-        text.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-                    text, "show")
-
-            ActivityCompat.startActivity(this, intent, options.toBundle())
-        }
+        showStateSucceed()
+        val transaction = supportFragmentManager.beginTransaction()
+        val tabFragment=TabFragment.newInstance()
+        transaction.add(R.id.fl_view, tabFragment)
+        transaction.commit()
         rb_tab1.setOnClickListener {
             onArim(rb_tab1)
-            SkinManager.getInstance().changeSkin("lv");
+            SkinManager.getInstance().changeSkin("lv")
+            val intent = Intent(mContext, LoginActivity::class.java)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                    rb_tab1, "show")
+
+            ActivityCompat.startActivity(this, intent, options.toBundle())
         }
         rb_tab2.setOnClickListener {
             onArim(rb_tab1)
@@ -116,7 +122,13 @@ class MainActivity : InitActivity(), NavigationView.OnNavigationItemSelectedList
             onArim(rb_tab1)
         }
         iv_tab.setOnClickListener {
-            onArim(iv_tab)
+//            onArim(iv_tab)
+            val intent = Intent(this, LoginActivity::class.java)
+
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                    iv_tab, "show")
+
+            ActivityCompat.startActivity(this, intent, options.toBundle())
         }
     }
 

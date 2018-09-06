@@ -10,6 +10,14 @@ import kotlinx.android.synthetic.main.activity_launch.*
 
 @Route(path = RouterConfig.LAUNCH)
 class LaunchActivity : InitActivity() {
+    override fun onLoadData() {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getLayoutId(): Int {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.activity_launch
+    }
 
     val handler= Handler()
     val runnable= Runnable {
@@ -19,13 +27,10 @@ class LaunchActivity : InitActivity() {
         }
     }
 
-    override fun getLayout(): Int {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        return R.layout.activity_launch
-    }
 
     override fun onCreate() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showStateSucceed()
         if (intent.flags and Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT != 0) {
             finish()
             return

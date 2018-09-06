@@ -2,17 +2,16 @@ package com.shanghaizhida.mykotlin.base
 
 import android.os.Bundle
 import com.olq.baseframe.base.BaseActivity
-import com.olq.baseframe.utils.IntentUtils
 
 
 abstract class InitActivity :BaseActivity(){
 
-    fun Intent(clazz :Class<*>,isFirsh:Boolean){
-        IntentUtils.Intent(this,clazz,null,isFirsh)
-    }
-    fun Intent(clazz :Class<*>){
-        IntentUtils.Intent(this,clazz,null,false)
-    }
+//    fun Intent(clazz :Class<*>,isFirsh:Boolean){
+//        IntentUtils.Intent(this,clazz,null,isFirsh)
+//    }
+//    fun Intent(clazz :Class<*>){
+//        IntentUtils.Intent(this,clazz,null,false)
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

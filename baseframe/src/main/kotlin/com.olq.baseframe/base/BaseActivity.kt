@@ -3,8 +3,11 @@ package com.olq.baseframe.base
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.view.ViewGroup
 import com.olq.baseframe.event.BaseEvent
 import com.olq.baseframe.event.EventManage
+import com.olq.baseframe.widget.FlexibleLayout
 import com.zhy.changeskin.SkinManager
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -16,22 +19,45 @@ abstract class BaseActivity : AppCompatActivity() {
         lateinit var mContext:Context
     }
 
-
-    abstract fun getLayout(): Int
+    private var mFlexibleLayout: FlexibleLayout? = null
+    abstract fun getLayoutId(): Int
     abstract fun onCreate()
-
+    abstract fun onLoadData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayout())
+        setContentView(getView())
         ActivityManager.pushActivity(this)
+        SkinManager.getInstance().register(this)
         if (isEventBus()){
             register()
         }
         mContext=this
         onCreate()
-        SkinManager.getInstance().register(this)
     }
+
+    fun getView(): View {
+        mFlexibleLayout = object : FlexibleLayout(this) {
+
+          override fun loadData() {
+              //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+              onLoadData()
+          }
+
+          override fun initNormalView(): ViewGroup {
+              //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            return  getLayoutNormalView()
+          }
+        }
+        showStateLoading()
+        return mFlexibleLayout as FlexibleLayout
+    }
+
+    private fun getLayoutNormalView(): ViewGroup {
+        return View.inflate(this, getLayoutId(), null) as ViewGroup
+    }
+
+
 
 
     override fun onDestroy() {
@@ -68,5 +94,41 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
+
+    /**
+     * 成功
+     * @param code
+     */
+    fun showStateSucceed(){
+        mFlexibleLayout?.showPageWithState(FlexibleLayout.State.Succeed)
+    }
+    /**
+     * 加载
+     * @param code
+     */
+    fun showStateLoading(){
+        mFlexibleLayout?.showPageWithState(FlexibleLayout.State.Loading)
+    }
+    /**
+     * 失败
+     * @param code
+     */
+    fun showStateError(){
+        mFlexibleLayout!!.showPageWithState(FlexibleLayout.State.Error)
+    }
+    /**
+     * 空数据
+     * @param code
+     */
+    fun showStateEmpty(){
+        mFlexibleLayout!!.showPageWithState(FlexibleLayout.State.Empty)
+    }
+    /**
+     * 无网络
+     * @param code
+     */
+    fun showStateNetWorkError(){
+        mFlexibleLayout!!.showPageWithState(FlexibleLayout.State.NetWorkError)
+    }
 
 }

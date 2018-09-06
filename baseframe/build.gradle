@@ -46,6 +46,7 @@ dependencies {
     implementation rootProject.ext.dependencies.fileTree
     implementation rootProject.ext.dependencies.kotlinStdlibJre7
     implementation rootProject.ext.dependencies.appcompatV7
+//    implementation rootProject.ext.dependencies.supportV4
 //    testImplementation rootProject.ext.dependencies.junit
 //    androidTestImplementation rootProject.ext.dependencies.runner
 //    androidTestImplementation rootProject.ext.dependencies.espressoCore
