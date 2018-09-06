@@ -54,6 +54,7 @@ dependencies {
     api rootProject.ext.dependencies.okgo
     api rootProject.ext.dependencies.eventbus
     api 'com.alibaba:arouter-api:1.4.0'
+    api 'com.zhy:changeskin:4.0.2'
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.1'
 
 //    api 'com.tencent.bugly:crashreport_upgrade:latest.release'

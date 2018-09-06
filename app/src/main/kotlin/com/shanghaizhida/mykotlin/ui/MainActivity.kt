@@ -3,14 +3,12 @@ package com.shanghaizhida.mykotlin.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
-import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,8 +20,10 @@ import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.loader.call.GsonCallBack
 import com.olq.baseframe.utils.LogUtils
 import com.shanghaizhida.mykotlin.R
+import com.shanghaizhida.mykotlin.base.InitActivity
 import com.shanghaizhida.mykotlin.bean.UserBean
 import com.shanghaizhida.mykotlin.config.RouterConfig
+import com.zhy.changeskin.SkinManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -33,18 +33,19 @@ import kotlinx.android.synthetic.main.content_main.*
 
 
 @Route(path = RouterConfig.MAIN)
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : InitActivity(), NavigationView.OnNavigationItemSelectedListener {
+    override fun getLayout(): Int {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.activity_main
+    }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onCreate() {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         setSupportActionBar(toolbar)
-
         fab.setOnClickListener { view ->
 
 
-//            startActivity(Intent(application,LoginActivity::class.java))
+            //            startActivity(Intent(application,LoginActivity::class.java))
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             val params=HttpParams()
@@ -87,6 +88,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         onTab()
     }
 
+
+
+
     fun onTab(){
         text.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -98,12 +102,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         rb_tab1.setOnClickListener {
             onArim(rb_tab1)
+            SkinManager.getInstance().changeSkin("lv");
         }
         rb_tab2.setOnClickListener {
             onArim(rb_tab1)
+            SkinManager.getInstance().changeSkin("gren");
         }
         rb_tab3.setOnClickListener {
             onArim(rb_tab1)
+            SkinManager.getInstance().removeAnySkin()
         }
         rb_tab4.setOnClickListener {
             onArim(rb_tab1)

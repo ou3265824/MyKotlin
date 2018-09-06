@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.olq.baseframe.event.BaseEvent
 import com.olq.baseframe.event.EventManage
+import com.zhy.changeskin.SkinManager
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -29,12 +30,14 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         mContext=this
         onCreate()
-
+        SkinManager.getInstance().register(this)
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
         ActivityManager.popActivity(this)
+        SkinManager.getInstance().unregister(this)
         if (isEventBus()){
             unregister()
         }

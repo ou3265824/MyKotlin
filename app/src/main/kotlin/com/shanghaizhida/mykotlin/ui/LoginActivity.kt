@@ -1,9 +1,9 @@
 package com.shanghaizhida.mykotlin.ui
 
-import com.olq.baseframe.base.BaseActivity
 import com.shanghaizhida.mykotlin.R
+import com.shanghaizhida.mykotlin.base.InitActivity
 
-class LoginActivity : BaseActivity() {
+class LoginActivity : InitActivity() {
 
 
     override fun getLayout(): Int {

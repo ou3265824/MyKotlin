@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/d"
+    android:tag="skin:d:background"
     android:transitionName="show"
     tools:context=".ui.LoginActivity">
 

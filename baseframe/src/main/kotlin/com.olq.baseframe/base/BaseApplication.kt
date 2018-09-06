@@ -5,6 +5,7 @@ import android.content.Context
 import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.utils.SharePrefUtils
 import com.olq.baseframe.utils.ToastUtils
+import com.zhy.changeskin.SkinManager
 
 abstract class BaseApplication : Application() {
 
@@ -19,6 +20,7 @@ abstract class BaseApplication : Application() {
         SharePrefUtils.init(this)
         ToastUtils.init(this)
         CrashHandler.init(this)
+        SkinManager.getInstance().init(this)
 //        Bugly.init(this, "e423995e12", false)
 
 //        if (Build.isDebug()) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效

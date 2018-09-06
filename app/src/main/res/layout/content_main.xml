@@ -20,6 +20,7 @@
             android:layout_height="150dp"
             android:text="Hello World!"
             android:background="@color/d"
+            android:tag="skin:d:background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -31,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/b"
+        android:tag="skin:d:background"
         />
     <RadioGroup
         android:id="@+id/rg_tab"
@@ -47,6 +49,7 @@
             android:layout_height="match_parent"
             android:text="1111"
             android:button="@null"
+            android:tag="skin:d:background"
             android:background="@color/d"
             />
         <android.support.v7.widget.AppCompatRadioButton
