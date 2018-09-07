@@ -1,7 +1,7 @@
 package com.shanghaizhida.mykotlin.config
 
 import com.alibaba.android.arouter.launcher.ARouter
-import com.olq.baseframe.base.BaseActivity
+import com.olq.baseframe.base.ui.BaseActivity
 
 abstract class  RouterConfig{
 

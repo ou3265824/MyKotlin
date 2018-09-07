@@ -21,7 +21,7 @@
 //import android.widget.ImageView;
 //import android.widget.TextView;
 //
-//import com.olq.baseframe.base.BaseActivity;
+//import com.olq.baseframe.base.ui.BaseActivity;
 //import com.shanghaizhida.newmtrader.utils.LogUtils;
 //import com.shanghaizhida.newmtrader.utils.SelectPhotoUtil;
 //

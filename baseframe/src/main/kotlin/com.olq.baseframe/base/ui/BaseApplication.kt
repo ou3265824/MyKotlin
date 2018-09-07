@@ -1,7 +1,8 @@
-package com.olq.baseframe.base
+package com.olq.baseframe.base.ui
 
 import android.app.Application
 import android.content.Context
+import com.olq.baseframe.base.CrashHandler
 import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.utils.SharePrefUtils
 import com.olq.baseframe.utils.ToastUtils

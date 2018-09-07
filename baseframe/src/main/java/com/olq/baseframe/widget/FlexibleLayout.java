@@ -137,8 +137,31 @@ public abstract class FlexibleLayout extends FrameLayout {
                 if (mNetworkErrorView == null) {
                     ViewStub viewStub = (ViewStub) findViewById(R.id.vs_error);
                     mNetworkErrorView = viewStub.inflate();
-                    View btnRetry = mNetworkErrorView.findViewById(R.id.btn_retry);
-                    btnRetry.setOnClickListener(new OnClickListener() {
+                    mNetworkErrorView.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            loadindData();
+                        }
+                    });
+
+                } else {
+                    mNetworkErrorView.setVisibility(VISIBLE);
+                }
+                break;
+            case Error:
+                mSuccessView.setVisibility(GONE);
+                if (mLoadingView != null) {
+                    mLoadingView.setVisibility(GONE);
+                }
+
+                if (mEmptyView != null) {
+                    mEmptyView.setVisibility(GONE);
+                }
+
+                if (mNetworkErrorView == null) {
+                    ViewStub viewStub = (ViewStub) findViewById(R.id.vs_error);
+                    mNetworkErrorView = viewStub.inflate();
+                    mNetworkErrorView.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             loadindData();

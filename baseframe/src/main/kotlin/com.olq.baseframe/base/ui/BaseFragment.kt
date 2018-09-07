@@ -1,4 +1,4 @@
-package com.olq.baseframe.base
+package com.olq.baseframe.base.ui
 
 import android.content.Context
 import android.os.Bundle

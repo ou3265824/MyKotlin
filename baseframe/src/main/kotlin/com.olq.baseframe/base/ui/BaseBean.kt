@@ -1,4 +1,4 @@
-package com.olq.baseframe.base
+package com.olq.baseframe.base.ui
 
 data class BaseBean(var code:Int,var message:String,var data:Any) {
 

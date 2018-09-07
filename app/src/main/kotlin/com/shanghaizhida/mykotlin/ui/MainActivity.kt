@@ -16,6 +16,9 @@ import android.view.ViewAnimationUtils
 import android.view.animation.AccelerateInterpolator
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.lzy.okgo.model.HttpParams
+import com.olq.baseframe.base.mvp.BaseModel
+import com.olq.baseframe.base.mvp.BasePresenter
+import com.olq.baseframe.base.mvp.BaseView
 import com.olq.baseframe.loader.OkgoLoader
 import com.olq.baseframe.loader.call.GsonCallBack
 import com.olq.baseframe.utils.LogUtils
@@ -27,24 +30,25 @@ import com.zhy.changeskin.SkinManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-
-
-
+import kotlinx.android.synthetic.main.widget_title_bar.*
 
 
 @Route(path = RouterConfig.MAIN)
-class MainActivity : InitActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : InitActivity<BasePresenter<BaseModel, BaseView>, BaseModel>(), NavigationView.OnNavigationItemSelectedListener {
     override fun onLoadData() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getLayoutId(): Int {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         return R.layout.activity_main
     }
 
     override fun onCreate() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showStateSucceed()
+        tb_title.setText("首页")
         setSupportActionBar(toolbar)
         fab.setOnClickListener { view ->
 
@@ -96,14 +100,14 @@ class MainActivity : InitActivity(), NavigationView.OnNavigationItemSelectedList
 
 
     fun onTab(){
-        showStateSucceed()
+
         val transaction = supportFragmentManager.beginTransaction()
         val tabFragment=TabFragment.newInstance()
         transaction.add(R.id.fl_view, tabFragment)
         transaction.commit()
         rb_tab1.setOnClickListener {
             onArim(rb_tab1)
-            SkinManager.getInstance().changeSkin("lv")
+
             val intent = Intent(mContext, LoginActivity::class.java)
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
                     rb_tab1, "show")
@@ -112,23 +116,15 @@ class MainActivity : InitActivity(), NavigationView.OnNavigationItemSelectedList
         }
         rb_tab2.setOnClickListener {
             onArim(rb_tab1)
-            SkinManager.getInstance().changeSkin("gren");
+            SkinManager.getInstance().changeSkin("gren")
         }
         rb_tab3.setOnClickListener {
             onArim(rb_tab1)
             SkinManager.getInstance().removeAnySkin()
+            SkinManager.getInstance().changeSkin("lv")
         }
         rb_tab4.setOnClickListener {
             onArim(rb_tab1)
-        }
-        iv_tab.setOnClickListener {
-//            onArim(iv_tab)
-            val intent = Intent(this, LoginActivity::class.java)
-
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-                    iv_tab, "show")
-
-            ActivityCompat.startActivity(this, intent, options.toBundle())
         }
     }
 

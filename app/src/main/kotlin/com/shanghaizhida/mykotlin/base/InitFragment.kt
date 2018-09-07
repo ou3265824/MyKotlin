@@ -1,8 +1,8 @@
 package com.shanghaizhida.mykotlin.base
 
-import com.olq.baseframe.base.BaseFragment
+import com.olq.baseframe.base.ui.BaseFragment
 
-abstract class InitFragment:BaseFragment(){
+abstract class InitFragment: BaseFragment(){
 
 
 

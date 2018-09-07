@@ -1,28 +1,41 @@
 package com.shanghaizhida.mykotlin.base
 
 import android.os.Bundle
-import com.olq.baseframe.base.BaseActivity
+import com.olq.baseframe.base.mvp.BaseModel
+import com.olq.baseframe.base.mvp.BasePresenter
+import com.olq.baseframe.base.mvp.BaseView
+import com.olq.baseframe.base.ui.BaseActivity
+import java.lang.reflect.ParameterizedType
 
 
-abstract class InitActivity :BaseActivity(){
+abstract class InitActivity<P: BasePresenter<BaseModel, BaseView>,M:BaseModel> : BaseActivity(){
 
-//    fun Intent(clazz :Class<*>,isFirsh:Boolean){
-//        IntentUtils.Intent(this,clazz,null,isFirsh)
-//    }
-//    fun Intent(clazz :Class<*>){
-//        IntentUtils.Intent(this,clazz,null,false)
-//    }
+    private var mPresenter: P? = null
+
+    abstract fun onCreate()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        val loadService = LoadSir.getDefault().register(this, object : Callback.OnReloadListener {
-//            override fun onReload(v: View?) {
-//                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//                // 重新加载逻辑
-//                ToastUtils.show("重新加载逻辑")
-//            }
-//        })
+        mPresenter=getT<P>(this,0)
+        var mModel=getT<M>(this,1)
+        mPresenter!!.attachModelView(mModel,this)
+        onCreate()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter?.onDettach()
+    }
+
+
+    fun <T>  getT( o:Any,  i:Int):T {
+//        try {
+//
+//            return ((Class<T>) (ParameterizedType (o.getClass().getGenericSuperclass())).getActualTypeArguments()[i]).newInstance();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        return ((o.javaClass.genericSuperclass as ParameterizedType).getActualTypeArguments()[i] as Class<T>).newInstance()
     }
 
 }

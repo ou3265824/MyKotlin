@@ -1,5 +1,6 @@
 package com.shanghaizhida.mykotlin.ui
 
+import com.olq.baseframe.utils.ToastUtils
 import com.shanghaizhida.mykotlin.R
 import com.shanghaizhida.mykotlin.base.InitFragment
 
@@ -19,7 +20,8 @@ class TabFragment : InitFragment() {
     }
 
     override fun onLoadData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        ToastUtils.show("重新加载")
     }
 
     override fun onInVisibe() {
@@ -29,6 +31,8 @@ class TabFragment : InitFragment() {
     override fun init() {
        // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //        showStateNetWorkError()
+//        showStateEmpty()
+//        showStateError()
     }
 
     override fun getLayoutId(): Int {

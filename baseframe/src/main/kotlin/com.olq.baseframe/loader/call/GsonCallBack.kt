@@ -1,6 +1,6 @@
 package com.olq.baseframe.loader.call
 
-import com.olq.baseframe.base.BaseBean
+import com.olq.baseframe.base.ui.BaseBean
 import com.olq.baseframe.utils.GsonUtils
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
@@ -29,13 +29,9 @@ abstract class GsonCallBack<T>: StringCallBack(){
             if (name == String::class.java.name || name == Objects::class.java.name) {
                 onSuccess(json as T)
                 return
-//            }else{
-//                getJson(json)
             }
         }
-//        }else{
-            getJson(json)
-//        }
+        getJson(json)
 
     }
 

@@ -17,19 +17,12 @@
         />
 
 
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/iv_tab"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/b"
-        android:tag="skin:d:background"
-        />
     <RadioGroup
         android:id="@+id/rg_tab"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:background="@color/w"
+        android:background="@color/white"
         >
 
         <android.support.v7.widget.AppCompatRadioButton

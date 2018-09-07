@@ -3,13 +3,16 @@ package com.shanghaizhida.mykotlin.ui
 import android.content.Intent
 import android.os.Handler
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.olq.baseframe.base.mvp.BaseModel
+import com.olq.baseframe.base.mvp.BasePresenter
+import com.olq.baseframe.base.mvp.BaseView
 import com.shanghaizhida.mykotlin.R
 import com.shanghaizhida.mykotlin.base.InitActivity
 import com.shanghaizhida.mykotlin.config.RouterConfig
 import kotlinx.android.synthetic.main.activity_launch.*
 
 @Route(path = RouterConfig.LAUNCH)
-class LaunchActivity : InitActivity() {
+class LaunchActivity : InitActivity<BasePresenter<BaseModel,BaseView>,BaseModel>() {
     override fun onLoadData() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

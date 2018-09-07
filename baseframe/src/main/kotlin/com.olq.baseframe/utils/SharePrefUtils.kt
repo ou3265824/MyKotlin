@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.text.TextUtils
 import com.google.gson.Gson
-import com.olq.baseframe.base.BaseApplication
+import com.olq.baseframe.base.ui.BaseApplication
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
 import java.lang.reflect.Type

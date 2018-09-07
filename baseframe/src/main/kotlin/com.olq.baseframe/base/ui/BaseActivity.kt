@@ -1,10 +1,12 @@
-package com.olq.baseframe.base
+package com.olq.baseframe.base.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
+import com.olq.baseframe.base.ActivityManager
+import com.olq.baseframe.base.mvp.BaseView
 import com.olq.baseframe.event.BaseEvent
 import com.olq.baseframe.event.EventManage
 import com.olq.baseframe.widget.FlexibleLayout
@@ -13,15 +15,15 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     companion object {
         lateinit var mContext:Context
     }
 
+
     private var mFlexibleLayout: FlexibleLayout? = null
     abstract fun getLayoutId(): Int
-    abstract fun onCreate()
     abstract fun onLoadData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +34,13 @@ abstract class BaseActivity : AppCompatActivity() {
         if (isEventBus()){
             register()
         }
-        mContext=this
-        onCreate()
+        mContext =this
+
     }
+
+
+
+
 
     fun getView(): View {
         mFlexibleLayout = object : FlexibleLayout(this) {

@@ -1,7 +1,7 @@
 package com.shanghaizhida.mykotlin.base
 
 import com.alibaba.android.arouter.launcher.ARouter
-import com.olq.baseframe.base.BaseApplication
+import com.olq.baseframe.base.ui.BaseApplication
 
 
 class InitApplication : BaseApplication() {
